@@ -55,8 +55,8 @@ Un grupo es un conjunto de elementos {a,b,c,...} (nos referimos a grupos de núm
 Para ser considerada un grupo, esta combinación debe tener ciertas propiedades
 
 1. Cierre.
-      Para todo a, b en G,  el resultado de la operación, a • b, también está en G
+    * Para todo a, b en G,  el resultado de la operación, a • b, también está en G
 2. Asociatividad.
-      Para todos los a, b y c en G, (a • b) • c = a • (b • c)
+    * Para todos los a, b y c en G, (a • b) • c = a • (b • c)
 3. Elementos de identidad.
-       Existe un elemento e en G tal que, para cada elemento a en G, la ecuación e • a = a • e = a. Tal elemento es único y por lo tanto se habla del elemento identidad.
+    * Existe un elemento e en G tal que, para cada elemento a en G, la ecuación e • a = a • e = a. Tal elemento es único y por lo tanto se habla del elemento identidad.
