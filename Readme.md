@@ -76,6 +76,7 @@ Del pequeño teorema de Fermat
 a elevado -1 ≡ a elevado p -2(modp)
 ```
 ![Graph](/im%C3%A1genes/inver.png)
+
 Sea p = 7 y a = 2. Podemos calcular la inversa de a como:
 
 ```
