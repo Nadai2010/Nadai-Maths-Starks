@@ -11,7 +11,8 @@ Puede encontrar las notas originales [aquí](https://bit.ly/starkmaths2023)
 ## Temas
 
 - [Matemáticas de base](#matemáticas-de-base)
-    - [Aritmética modular / Campos finitos](#aritmética-modular-/-campos-finitos)
+    - [Aritmética modular](#aritmética-modular)
+    - [Campos finitos](#campos-finitos)
     - [Polinomios](#polinomios)
 - [Sistemas de comprobación ZK](#sistemas-de-comprobación-ZK)
     - [Sistema de comprobación idealizado para la integridad computacional](#sistema-de-comprobación-idealizado-para-laintegridad-computacional)
@@ -47,14 +48,15 @@ Cuando escribimos n mod k nos referimos simplemente al resto cuando n se divide 
 ```
 El resto debe ser positivo.
 
-#### Teoría de grupos y campos
+### Teoría de grupos y campos
+#### Campos Finitos
 Un grupo es un conjunto de elementos {a,b,c,...} (nos referimos a grupos de números, pero pueden ser cualquier cosa) más una operación binaria, que aquí representamos como `•`. 
 
 Para ser considerada un grupo, esta combinación debe tener ciertas propiedades
 
 1. Cierre.
-    Para todo a, b en G,  el resultado de la operación, a • b, también está en G
+      Para todo a, b en G,  el resultado de la operación, a • b, también está en G
 2. Asociatividad.
-    Para todos los a, b y c en G, (a • b) • c = a • (b • c)
+      Para todos los a, b y c en G, (a • b) • c = a • (b • c)
 3. Elementos de identidad.
-    Existe un elemento e en G tal que, para cada elemento a en G, la ecuación e • a = a • e = a. Tal elemento es único y por lo tanto se habla del elemento identidad.
+       Existe un elemento e en G tal que, para cada elemento a en G, la ecuación e • a = a • e = a. Tal elemento es único y por lo tanto se habla del elemento identidad.
