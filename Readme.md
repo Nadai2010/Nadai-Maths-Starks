@@ -23,7 +23,7 @@ Puede encontrar las notas originales [aquí](https://bit.ly/starkmaths2023)
     - [Lemma de Schwartz-Zippel](#lemma-de-schwartz-zippel)
     - [Interpolación de Lagrange](#interpolación-de-lagrange)
 - [Sistemas de prueba de conocimiento cero](#sistemas-de-prueba-de-conocimiento-cero)
-    - [¿Qué es una prueba de conocimiento cero?](#¿qué-es-una-prueba-de-conocimiento-cero?)
+    - [¿Qué es una prueba de conocimiento cero?](#qué-es-una-prueba-de-conocimiento-cero)
     - [Actores en un sistema a prueba de conocimiento cero](#actores-en-un-sistema-a-prueba-de-conocimiento-cero)
     - [Sistema de comprobación idealizado para la integridad computacional](#sistema-de-comprobación-idealizado-para-laintegridad-computacional)
     - [Uso de polinomios y restricciones](#uso-de-polinomios-y-restricciones)
@@ -153,7 +153,7 @@ Para `n` puntos, puedes crear un polinomio de grado `n-1` que pase por todos los
 ![Graph](/im%C3%A1genes/Lagrange.png)
 
 ## Sistemas de prueba de conocimiento cero
-### ¿Qué es una prueba de conocimiento cero?
+### Qué es una prueba de conocimiento cero
 #### Una definición imprecisa
 Es una prueba de que existe o de que sabemos algo, más un aspecto de conocimiento cero,es decir, la persona que verifica la prueba sólo obtiene una información: que la prueba es válida o inválida.
 
