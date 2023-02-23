@@ -37,7 +37,7 @@ Utilizamos campos finitos para la criptografía, porque los elementos tienen rep
 #### Aritmética modular
 [Véase esta introducción](https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/what-is-modular-arithmetic)
 
-¡[Graph](/im%C3%A1genes/AritemticaModular.png)
+![Graph](/im%C3%A1genes/AritemticaModular.png)
 
 Cuando escribimos n mod k nos referimos simplemente al resto cuando n se divide por k. Así:
 
@@ -52,9 +52,9 @@ Un grupo es un conjunto de elementos {a,b,c,...} (nos referimos a grupos de núm
 
 Para ser considerada un grupo, esta combinación debe tener ciertas propiedades
 
-1. Cierre
+1. Cierre.
     Para todo a, b en G,  el resultado de la operación, a • b, también está en G
-2. Asociatividad
+2. Asociatividad.
     Para todos los a, b y c en G, (a • b) • c = a • (b • c)
-3. Elementos de identidad
+3. Elementos de identidad.
     Existe un elemento e en G tal que, para cada elemento a en G, la ecuación e • a = a • e = a. Tal elemento es único y por lo tanto se habla del elemento identidad.
