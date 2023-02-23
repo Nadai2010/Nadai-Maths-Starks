@@ -28,10 +28,9 @@ Puede encontrar las notas originales [aquí](https://bit.ly/starkmaths2023)
     - [Tipos de sistema ZK](#tipos-de-sistema-zk)
     - [¿Qué exigimos de una prueba](#¿qué-exigimos-de-una-prueba)
     - [Sucintos o Succinctness](#sucintos-o-succinctness)
-
-
     - [Sistema de comprobación idealizado para la integridad computacional](#sistema-de-comprobación-idealizado-para-laintegridad-computacional)
     - [Uso de polinomios y restricciones](#uso-de-polinomios-y-restricciones)
+    - [Códigos Reed Solomon](#códigos-reed-solomon)
 - [Integridad computacional](#integridad-computacional)
 - [Starks](#starks)
     - [Visión general del proceso stark](#visión-general-del-proceso-stark)
@@ -215,6 +214,7 @@ Normalmente el número de consultas es de 3 - 10, mucho menos que el grado.
 
 La única aleatoriedad que utilizamos aquí es el muestreo de `z` entre `0,..p-1`, en general la aleatoriedad que utilizamos en el proceso es esencial tanto para la concisión como para el conocimiento cero.
 
+### Uso de polinomios y restricciones
 #### ¿Por qué no evalúa el verificador los propios polinomios?
 - Porque, en realidad, el prover no envía todos los polinomios al verificador, si lo hiciera perderíamos concisión, contienen más información que nuestra declaración original, por lo que el prover sólo proporciona un compromiso con los polinomios.
 
@@ -237,4 +237,32 @@ Lo resolvemos
 Tomar un conjunto S = 1...10⁶
 
 Definir `V` como el único polinomio que desaparece en estos puntos, es
-decir: `(x - 1)(x - 2)(x - 3)...` el grado de `V=tamaño de S`
+decir:
+ `(x - 1)(x - 2)(x - 3)...` 
+ el grado de `V=tamaño de S`, esto es bueno porque 
+    1. `P(x)=P'(x)•V(x)`
+    2. `Grado de P=grado de P - tamaño de S`
+
+ Es la introducción de `V(x)` lo que nos permite comprobar en todo el dominio.
+ 
+3. Tienen propiedad "multiplicadora". Podemos "envolver" una restricción alrededor de un polinomio.
+ 
+Por ejemplo, si tenemos la restricción `C`, que nuestra evaluación siempre será un cero o un uno, podríamos escribirlo como `C(x)=x•(x-1)`
+Se podría imaginar esto restringiendo una salida a ser un booleano, algo que puede ser útil para la integridad computacional.
+
+Pero aquí en vez de ser x un simple punto podría ser la evaluación de un polinomio `P₁(x)` en un punto, es decir,
+`C(P₁(x)) = P₁(x)•(P₁(x)-1)`
+
+y los grados de los polinomios producidos por la multiplicación son entonces aditivos por lo que el grado de `C(x)=2. grado de P₁(x)`
+
+Entonces podemos afirmar que si ` P₁(x)` cumple esta restricción para nuestro conjunto `S`, entonces, como antes, podemos decir que existe un polinomio `P'(x)` tal que
+
+`C(P₁(x)) = P'(x)•V(x)`
+
+Si `P₁(x)` no cumpliera la restricción (por ejemplo si para un valor de `x,P₁(x)= 93)` entonces no podríamos encontrar tales polinomios, la igualdad no se cumpliría y habría
+efectivamente un resto en la ecuación anterior.
+
+### Códigos Reed Solomon
+Véase `http://pfister.ee.duke.edu/courses/ecen604/rspoly.pdf`
+
+Un código Reed-Solomon es un conjunto de vectores de longitud `n` (denominados codewords), en el que los elementos del vector (denominados símbolos) constan de `m` dígitos binarios. Nuestra única restricción es que `n` no debe ser mayor que `2m`. De los `n` símbolos de cada palabra de código, `k` llevan información y los otros `(n - k)` son símbolos redundantes.
