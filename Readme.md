@@ -72,16 +72,10 @@ Un grupo finito puede ser cíclico. Esto significa que tiene un elemento generad
 #### Encontrar una inversa
 Del pequeño teorema de Fermat
 
-```
-a elevado -1 ≡ a elevado p -2(modp)
-```
 ![Graph](/im%C3%A1genes/inver.png)
 
 Sea p = 7 y a = 2. Podemos calcular la inversa de a como:
 
-```
-a elevado p -2 = 2 elevado 5 = 32 ≡ 4 mod 7.
-```
 ![Graph](/im%C3%A1genes/inver2.png)
 
 Esto es fácil de verificar: 2 x 4 ≡ 1 mod 7.
