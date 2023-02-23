@@ -270,3 +270,10 @@ Un código Reed-Solomon es un conjunto de vectores de longitud `n` (denominados 
 Supongamos que, del total de `n` símbolos, exactamente `t` de ellos se reciben con error (y los otros `n - t` se reciben correctamente).
 
 Los códigos Reed-Solomon tienen la notable propiedad de que si `t ≤ (n - k)/2`, la información correcta puede calcularse a partir de este codeword defectuoso.
+
+Además, si `s` de los símbolos recibidos se borran (es decir, se etiquetan como probablemente defectuosos) y otros `t` símbolos se reciben con error, la información correcta puede
+calcularse a partir de la palabra de código defectuosa siempre que `s + 2t ≤ n - k`.
+
+El dispositivo que reconstruye la información a partir del vector recibido se denomina descodificador
+
+## Integridad Computacional 
