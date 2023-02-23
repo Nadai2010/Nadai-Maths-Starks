@@ -25,6 +25,10 @@ Puede encontrar las notas originales [aquí](https://bit.ly/starkmaths2023)
 - [Sistemas de prueba de conocimiento cero](#sistemas-de-prueba-de-conocimiento-cero)
     - [¿Qué es una prueba de conocimiento cero?](#qué-es-una-prueba-de-conocimiento-cero)
     - [Actores en un sistema a prueba de conocimiento cero](#actores-en-un-sistema-a-prueba-de-conocimiento-cero)
+    - [Tipos de sistema ZK](#tipos-de-sistema-zk)
+    - [¿Qué exigimos de una prueba](#¿qué-exigimos-de-una-prueba)
+
+
     - [Sistema de comprobación idealizado para la integridad computacional](#sistema-de-comprobación-idealizado-para-laintegridad-computacional)
     - [Uso de polinomios y restricciones](#uso-de-polinomios-y-restricciones)
 - [Integridad computacional](#integridad-computacional)
@@ -170,3 +174,5 @@ A menudo, la verificación será automática, realizada por un contrato intelige
 
 ### Tipos de sistema ZK
 ![Graph](/im%C3%A1genes/zk.png)
+
+### ¿Qué exigimos de una prueba?
