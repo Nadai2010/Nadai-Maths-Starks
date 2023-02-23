@@ -161,3 +161,12 @@ Es una prueba de que existe o de que sabemos algo, más un aspecto de conocimien
 * Creador - opcional, puede combinarse con el prover
 * Prover
 * Verificador
+
+El prover creará una prueba para convencer al verificador de que conoce un valor secreto (el testigo) o de que un cálculo se ha realizado correctamente.
+
+El sistema de comprobación puede ser interactivo, en el que el comprobador y el verificador intercambian mensajes para verificar la prueba, o puede consistir únicamente en que el comprobador envíe la prueba al verificador, que puede aceptarla o rechazarla en un solo paso.
+
+A menudo, la verificación será automática, realizada por un contrato inteligente en Ethereum, por ejemplo.
+
+### Tipos de sistema ZK
+![Graph](/im%C3%A1genes/zk.png)
