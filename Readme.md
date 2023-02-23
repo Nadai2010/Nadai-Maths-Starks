@@ -20,7 +20,11 @@ Puede encontrar las notas originales [aquí](https://bit.ly/starkmaths2023)
     - [Campos](#campos)
     - [Campos finitos y generadores](#campos-finitos-y-generadores)
     - [Polinomios](#polinomios)
-- [Sistemas de comprobación ZK](#sistemas-de-comprobación-ZK)
+    - [Lemma de Schwartz-Zippel](#lemma-de-schwartz-zippel)
+    - [Interpolación de Lagrange](#interpolación-de-lagrange)
+- [Sistemas de prueba de conocimiento cero](#sistemas-de-prueba-de-conocimiento-cero)
+    - [¿Qué es una prueba de conocimiento cero?](#¿qué-es-una-prueba-de-conocimiento-cero)
+    - [Actores en un sistema a prueba de conocimiento cero](#actores-en-un-sistema-a-prueba-de-conocimiento-cero)
     - [Sistema de comprobación idealizado para la integridad computacional](#sistema-de-comprobación-idealizado-para-laintegridad-computacional)
     - [Uso de polinomios y restricciones](#uso-de-polinomios-y-restricciones)
 - [Integridad computacional](#integridad-computacional)
@@ -121,3 +125,39 @@ En un campo finito de orden 𝔮, el polinomio X elevado 𝔮 - X tiene todos lo
 
 ### Polinomios
 Un polinomio es una ecuación de la forma
+
+![Graph](/im%C3%A1genes/poli.png)
+
+Donde los valores a son constantes, y x es una variable, si nuestro polinomio tiene una sola variable, se llama polinomio univariante.
+
+Un hecho básico sobre los polinomios y sus raíces es que si `p(x)` es un polinomio, entonces `p(a) = 0` para algún valor específico `𝔞`
+
+Si y sólo si existe un polinomio `q(x)` tal que `(x-a)q(x) = p(x)`, y por lo tanto 
+
+![Graph](/im%C3%A1genes/poli2.png)
+
+Esto es válido para todas las raíces, volveremos sobre ello más adelante.
+
+### Lemma de Schwartz-Zippel
+"diferentes polinomios son diferentes en la mayoría de los puntos".
+
+Los polinomios tienen una propiedad ventajosa, a saber, si tenemos dos polinomios no iguales de grado como máximo `d`, no pueden intersecarse en más de `d` puntos.
+
+![Graph](/im%C3%A1genes/Zippel2.png)
+
+### Interpolación de Lagrange
+Si tienes un conjunto de puntos, al hacer una interpolación de Lagrange en esos puntos obtienes un polinomio que pasa por todos esos puntos.
+Si tienes dos puntos en un plano, puedes definir una única recta que pase por ambos, para 3 puntos, una única curva de 2º grado `(por ejemplo, 5x2 + 2x + 1)` pasará por ellos, etc.
+Para `n` puntos, puedes crear un polinomio de grado `n-1` que pase por todos los puntos.
+
+![Graph](/im%C3%A1genes/Lagrange.png)
+
+## Sistemas de prueba de conocimiento cero
+### ¿Qué es una prueba de conocimiento cero?
+#### Una definición imprecisa
+Es una prueba de que existe o de que sabemos algo, más un aspecto de conocimiento cero,es decir, la persona que verifica la prueba sólo obtiene una información: que la prueba es válida o inválida.
+
+### Actores en un sistema a prueba de conocimiento cero
+* Creador - opcional, puede combinarse con el prover
+* Prover
+* Verificador
