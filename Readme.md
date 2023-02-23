@@ -266,3 +266,7 @@ efectivamente un resto en la ecuación anterior.
 Véase [http://pfister.ee.duke.edu/courses/ecen604/rspoly.pdf](http://pfister.ee.duke.edu/courses/ecen604/rspoly.pdf)
 
 Un código Reed-Solomon es un conjunto de vectores de longitud `n` (denominados codewords), en el que los elementos del vector (denominados símbolos) constan de `m` dígitos binarios. Nuestra única restricción es que `n` no debe ser mayor que `2m`. De los `n` símbolos de cada palabra de código, `k` llevan información y los otros `(n - k)` son símbolos redundantes.
+
+Supongamos que, del total de `n` símbolos, exactamente `t` de ellos se reciben con error (y los otros `n - t` se reciben correctamente).
+
+Los códigos Reed-Solomon tienen la notable propiedad de que si `t ≤ (n - k)/2`, la información correcta puede calcularse a partir de este codeword defectuoso.
