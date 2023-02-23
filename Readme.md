@@ -60,3 +60,27 @@ Para ser considerada un grupo, esta combinación debe tener ciertas propiedades
     * Para todos los a, b y c en G, (a • b) • c = a • (b • c)
 3. Elementos de identidad.
     * Existe un elemento e en G tal que, para cada elemento a en G, la ecuación e • a = a • e = a. Tal elemento es único y por lo tanto se habla del elemento identidad.
+4. Elemento inverso.
+    * Para cada a en G, existe un elemento b en G, comúnmente denotado a-1 (o -a, si la operación se denota "+"), tal que a • b = b • a = e, donde e es el elemento identidad.
+
+#### Subgrupos
+Si un subconjunto de los elementos de un grupo también satisface las propiedades del grupo, entonces es un subgrupo del grupo original.
+
+#### Grupos cíclicos y generadores
+Un grupo finito puede ser cíclico. Esto significa que tiene un elemento generador. Si se empieza en un punto cualquiera y luego se aplica la operación de grupo con el generador como argumento un cierto número de veces, se da la vuelta a todo el grupo y se termina en el mismo sitio, véase más abajo.
+
+#### Encontrar una inversa
+Del pequeño teorema de Fermat
+
+```
+a elevado -1 ≡ a elevado p -2(modp)
+```
+![Graph](/im%C3%A1genes/inver.png)
+Sea p = 7 y a = 2. Podemos calcular la inversa de a como:
+
+```
+a elevado p -2 = 2 elevado 5 = 32 ≡ 4 mod 7.
+```
+![Graph](/im%C3%A1genes/inver2.png)
+
+Esto es fácil de verificar: 2 x 4 ≡ 1 mod 7.
