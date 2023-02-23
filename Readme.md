@@ -27,6 +27,7 @@ Puede encontrar las notas originales [aquí](https://bit.ly/starkmaths2023)
     - [Actores en un sistema a prueba de conocimiento cero](#actores-en-un-sistema-a-prueba-de-conocimiento-cero)
     - [Tipos de sistema ZK](#tipos-de-sistema-zk)
     - [¿Qué exigimos de una prueba](#¿qué-exigimos-de-una-prueba)
+    - [Sucintos o Succinctness](#sucintos-o-succinctness)
 
 
     - [Sistema de comprobación idealizado para la integridad computacional](#sistema-de-comprobación-idealizado-para-laintegridad-computacional)
@@ -181,3 +182,16 @@ A menudo, la verificación será automática, realizada por un contrato intelige
 * Solidez: ni siquiera un prover deshonesto P que funcione en tiempo superpolinómico puede convencer a un verificador honesto V de una afirmación incorrecta.
 
 * Para que nuestra prueba sea de conocimiento cero, también necesitamos "conocimiento cero".
+
+Para simplificar demasiado: representado en un ordenador, un ZKP no es más que una secuencia de números, cuidadosamente calculados por Peggy, junto con un montón de comprobaciones booleanas que Victor puede ejecutar para verificar la prueba de corrección del cálculo.
+
+Un protocolo de conocimiento-cero es, por tanto, el mecanismo utilizado para derivar estos números y definir las comprobaciones de verificación.
+
+Nos interesa la integridad computacional (CI), por ejemplo, saber que el programa de Cairo
+que escribiste se calculó correctamente.
+
+### Sucintos o Succinctness
+Exigimos que nuestras pruebas y, en particular, el tiempo de verificación sean sucintos, es
+decir, que sean órdenes de magnitud más pequeños que el tiempo necesario para calcular
+nuestro programa; de lo contrario, no habría ninguna ventaja para el verificador en utilizar
+la prueba en lugar del cálculo original.
