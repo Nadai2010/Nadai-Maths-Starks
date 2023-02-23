@@ -26,7 +26,7 @@ Puede encontrar las notas originales [aquí](https://bit.ly/starkmaths2023)
     - [¿Qué es una prueba de conocimiento cero?](#qué-es-una-prueba-de-conocimiento-cero)
     - [Actores en un sistema a prueba de conocimiento cero](#actores-en-un-sistema-a-prueba-de-conocimiento-cero)
     - [Tipos de sistema ZK](#tipos-de-sistema-zk)
-    - [¿Qué exigimos de una prueba](#¿qué-exigimos-de-una-prueba)
+    - [Qué exigimos de una prueba](#qué-exigimos-de-una-prueba)
     - [Sucintos o Succinctness](#sucintos-o-succinctness)
     - [Sistema de comprobación idealizado para la integridad computacional](#sistema-de-comprobación-idealizado-para-laintegridad-computacional)
     - [Uso de polinomios y restricciones](#uso-de-polinomios-y-restricciones)
@@ -263,6 +263,6 @@ Si `P₁(x)` no cumpliera la restricción (por ejemplo si para un valor de `x,P�
 efectivamente un resto en la ecuación anterior.
 
 ### Códigos Reed Solomon
-Véase `http://pfister.ee.duke.edu/courses/ecen604/rspoly.pdf`
+Véase [http://pfister.ee.duke.edu/courses/ecen604/rspoly.pdf](http://pfister.ee.duke.edu/courses/ecen604/rspoly.pdf)
 
 Un código Reed-Solomon es un conjunto de vectores de longitud `n` (denominados codewords), en el que los elementos del vector (denominados símbolos) constan de `m` dígitos binarios. Nuestra única restricción es que `n` no debe ser mayor que `2m`. De los `n` símbolos de cada palabra de código, `k` llevan información y los otros `(n - k)` son símbolos redundantes.
