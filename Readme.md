@@ -176,3 +176,8 @@ A menudo, la verificación será automática, realizada por un contrato intelige
 ![Graph](/im%C3%A1genes/zk.png)
 
 ### ¿Qué exigimos de una prueba?
+* Completitud: existe un prover honesto P que puede convencer al verificador honesto V de cualquier afirmación correcta con una probabilidad muy alta.
+
+* Solidez: ni siquiera un prover deshonesto P que funcione en tiempo superpolinómico puede convencer a un verificador honesto V de una afirmación incorrecta.
+
+* Para que nuestra prueba sea de conocimiento cero, también necesitamos "conocimiento cero".
