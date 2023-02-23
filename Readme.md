@@ -206,3 +206,35 @@ Pasos:
 2. El verificador proporciona `dᵢ...dₙ` los límites de grado de los polinomios deseados
 3. El prover proporciona (o se compromete a) `Pᵢ..Pₖ`: polinomios limitados por esos grados
 4. El verificador proporciona `z ∈ 0,..p - 1`
+5. Prover proporciona evaluaciones de polinomios: `P₁(z)...Pₖz)`
+6. El verificador decide si acepta _S_
+
+Los grados esperados son típicamente alrededor de 106 (todavía se considera bajo grado). Tenga en cuenta la probabilidad de aceptar una prueba falsa es `< 10.d/p`, donde `p` es el tamaño del campo, por tanto del orden de `2⁻²³⁰` si nuestro campo finito tiene `p` de `~ 2²⁵⁶`.
+
+Normalmente el número de consultas es de 3 - 10, mucho menos que el grado.
+
+La única aleatoriedad que utilizamos aquí es el muestreo de `z` entre `0,..p-1`, en general la aleatoriedad que utilizamos en el proceso es esencial tanto para la concisión como para el conocimiento cero.
+
+#### ¿Por qué no evalúa el verificador los propios polinomios?
+- Porque, en realidad, el prover no envía todos los polinomios al verificador, si lo hiciera perderíamos concisión, contienen más información que nuestra declaración original, por lo que el prover sólo proporciona un compromiso con los polinomios.
+
+#### ¿Qué propiedades de los polinomios son importantes en este caso?
+1. Los polinomios son buenos códigos de corrección de errores.
+
+Si tenemos polinomios de grado `d` sobre un dominio de codificación `D`, y dos mensajes `m1 y m2`, entonces m1 y m2 diferirán en `|D|-d` puntos. Esto es importante porque queremos que la diferencia entre una correcta y una incorrecta declaración de ser grande, tan fácil de encontrar.
+
+Esto conduce a un buen muestreo, lo que ayuda a la concisión, sólo necesitamos muestrear unos pocos valores para estar seguros de que la probabilidad de error es lo suficientemente baja como para ser despreciable.
+
+2. Disponer de pruebas eficaces de lote cero. Esto también ayuda a
+la concisión
+
+Imaginemos que queremos demostrar que un polinomio de grado grande `P(x) (grado ~ 10 millones)` evalúa a cero en los puntos `1...1 millón`, pero queremos hacerlo con una sola consulta.
+
+Imaginemos que nuestra afirmación es que P desaparece en estos puntos. Si el verificador sólo utiliza el muestreo, el prover podría hacer trampas fácilmente proporcionando un punto que se evalúe como cero, pero los otros 999.999 podrían ser distintos de cero.
+
+Lo resolvemos
+
+Tomar un conjunto S = 1...10⁶
+
+Definir `V` como el único polinomio que desaparece en estos puntos, es
+decir: `(x - 1)(x - 2)(x - 3)...` el grado de `V=tamaño de S`
