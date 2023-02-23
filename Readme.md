@@ -195,3 +195,14 @@ Exigimos que nuestras pruebas y, en particular, el tiempo de verificación sean 
 decir, que sean órdenes de magnitud más pequeños que el tiempo necesario para calcular
 nuestro programa; de lo contrario, no habría ninguna ventaja para el verificador en utilizar
 la prueba en lugar del cálculo original.
+
+### Sistema de comprobación idealizado para la integridad computacional
+
+Hay muchas cosas que se omiten y se asumen aquí, esto es sólo para mostrar un proceso general.
+
+Pasos:
+
+1. Prover afirma Declaración _S_
+2. El verificador proporciona `dᵢ...dₙ` los límites de grado de los polinomios deseados
+3. El prover proporciona (o se compromete a) `Pᵢ..Pₖ`: polinomios limitados por esos grados
+4. El verificador proporciona `z ∈ 0,..p - 1`
