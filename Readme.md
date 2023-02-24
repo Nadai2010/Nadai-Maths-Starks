@@ -333,6 +333,7 @@ El tipo de traza de ejecución que buscamos generar debe tener la característic
 
 Por ejemplo, imaginemos que nuestra traza representa un total en ejecución, con cada paso de la siguiente manera.
 
+```bash
 ╔════════╦═══════════╦═══════╗
 ║  PASO  ║  IMPORTE  ║ TOTAL ║
 ╠════════╬═══════════╬═══════╣
@@ -348,6 +349,6 @@ Por ejemplo, imaginemos que nuestra traza representa un total en ejecución, con
 ╠════════╬═══════════╬═══════╣
 ║   5    ║     6     ║   18  ║
 ╚════════╩═══════════╩═══════╝
-
+```
 
 
