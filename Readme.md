@@ -389,7 +389,7 @@ También significa que los valores g son raíces de este polinomio.
 
 Por lo tanto, podemos utilizar el enfoque que vimos anteriormente para proporcionar el polinomio de fuga utilizando el término `(x - gⁱ)` y a partir de él creamos el polinomio de composición.
 
-![Graph](/im%C3%A1genes/compocisionpo.png.png)
+![Graph](/im%C3%A1genes/compocisionpo.png)
 
 El hecho básico sobre polinomios y sus raíces es que si `p(x)`
 es un polinomio, entonces `p(a)=0` para algún valor específico `a`, si y sólo si existe un polinomio `q(x)` tal que `(x-a)q(x)=p(x)`, y `deg(p)=deg(q)+1`.
