@@ -43,6 +43,7 @@ Puede encontrar las notas originales [aquí](https://bit.ly/starkmaths2023)
     - [De las restricciones polinómicas al problema de las pruebas de bajo grado](#de-las-restricciones-polinómicas-al-problema-de-las-pruebas-de-bajo-grado)
     - [Pruebas de bajo grado](#pruebas-de-bajo-grado)
     - [FRI](#fri)
+    - [Heurística Fiat-Shamir](#heurHeurística Fiat-Shamirística-fiat-shamir)
     - [Cairo y el no determinismo](#cairo-y-el-no-determinismo)
 
 ## Matemáticas de base
@@ -446,5 +447,120 @@ Así que si tenemos un prover deshonesto, que crea un polinomio de bajo grado re
 En [`estas`](https://www.sikoba.com/docs/zklux1_slides_dmitry.pdf) diapositivas se ofrece un buen ejemplo de este proceso
 
 ### Pruebas de bajo grado
-
 Las pruebas de bajo grado son realmente el corazón del proceso de verificación.
+
+#### En General
+El supuesto de comprobación de bajo grado establece la existencia de un verificador probabilístico que comprueba si una función `f` es degrado como máximo `d ≪ |𝔽|`
+.
+El verificador debe distinguir entre los dos casos siguientes.
+
+* La función `f` es igual a un polinomio de bajo grado.
+    * Es decir, existe un polinomio `p(x)` sobre `𝔽`, de grado menor que `d`, que coincide con `f` en todas partes.
+* La función `f` está lejos de TODOS los polinomios de bajo grado.
+    * Por ejemplo, necesitamos modificar al menos el 10% de los valores de `f` antes de obtener una función que concuerde con un polinomio de grado inferior a `d`.
+
+La aritmetización muestra que un prover honesto que trate con una afirmación verdadera caerá en el primer caso, mientras que un prover (posiblemente malicioso) que intente "probar" una afirmación falsa caerá, con alta probabilidad, en el segundo caso.
+
+Otra forma de ver esto es que el polinomio de traza correcto combinado con las restricciones será necesariamente de grado bajo, el grado proviene del número de pasos en nuestra traza (probablemente unos pocos millones), y la combinación de esto con los polinomios de restricción (probablemente < 10).
+
+En general, cabría esperar que los polinomios "correctos" tuvieran un grado de alrededor de `10⁷` , mientras que un probador tramposo que eligiera puntos al azar del campo `𝔽` obtendría, tras la interpolación, polinomios de grado comparable al tamaño del campo, es decir, del orden de `2²⁵⁶`
+
+## FRI
+FRI son las siglas de `Fast Reed-Solomon IOP of Proximity`, es un protocolo que establece que un polinomio comprometido tiene un grado acotado.
+
+El FRI es complejo y gran parte del procesamiento que lo compone está diseñado para que las pruebas sean factibles y sucintas.
+También hay mucho procesamiento involucrado con la protección contra diversos tipos de ataques que podrían ser realizados por el prover, y garantizar que todo se lleva a cabo en el conocimiento cero.
+
+Su objetivo es encontrar si un conjunto de puntos se encuentran mayoritariamente en un polinomio de bajo grado y puede alcanzar una complejidad de prueba lineal y una complejidad de verificación logarítmica.
+
+En general, hay 2 etapas : commit y query, contenidas en los siguientes pasos repetidos.
+
+1. El verificador envía un número aleatorio al prover
+2. El prover genera un nuevo polinomio
+3. El verificador genera los conjuntos puntuales de consultas y los envía al prover
+4. El prover evalúa los valores polinómicos correspondientes
+5. El verificador realiza una comprobación de validez.
+
+En este [artículo](https://aszepieniec.github.io/stark-anatomy/) se explica con más detalle.
+
+"FRI es un protocolo entre un probador y un verificador, que establece que una codeword dada pertenece a un polinomio de grado bajo.
+
+El prover conoce explícitamente este codeword, mientras que el verificador sólo conoce su raíz Merkle y las hojas de su elección, suponiendo la validación satisfactoria de las rutas de autenticación que establecen la pertenencia de las hojasʼ al árbol Merkle."
+
+"Una de las grandes ideas para los sistemas de pruebas de los últimos años ha sido la técnica de dividir y doblar. La idea es reducir una afirmación a dos afirmaciones de la mitad de tamaño. A continuación, ambas  afirmaciones se fusionan en una sola utilizando pesos aleatorios proporcionados por el verificador.
+
+Después de muchos pasos, la afirmación se ha reducido a una de tamaño trivial que es verdadera si y sólo si (modulo alguna degradación de seguridad insignificante) la afirmación original era verdadera."
+
+El verificador inspecciona los árboles de Merkle (en concreto: pide al probador que proporcione las hojas indicadas con sus rutas de autenticación) de rondas consecutivas para comprobar una relación lineal simple. 
+
+Para los verificadores honestos, el grado de los polinomios representados también se reduce a la mitad en cada ronda y, por tanto, es mucho menor que la longitud de la palabra clave.
+
+Sin embargo, para los probadores maliciosos, este grado es uno menos que la longitud de la palabra clave. En el último paso, el demostrador envía una palabra clave no trivial correspondiente a un polinomio constante.
+
+### Heurística Fiat-Shamir
+Véase [https://aszepieniec.github.io/stark-anatomy/basic-tools](Véase https://aszepieniec.github.io/stark-anatomy/basic-tools)
+
+Este es un proceso mediante el cual podemos hacer que una prueba interactiva no sea interactiva.
+
+Funciona proporcionando compromisos a los mensajes que formarían la interacción. Las funciones hash se utilizan como fuente de aleatoriedad.
+
+![Graph](/im%C3%A1genes/Shamir.png)
+
+### Cairo y el no determinismo
+Nos interesa la integridad computacional y, como hemos visto, todos los pasos de un cálculo pueden representarse como polinomios.
+Esta forma se denomina representación algebraica intermedia (AIR).
+
+Los bloques de cálculo representados como un AIR pueden combinarse entre sí, lo que constituye la base de Cairo.
+
+Por utilizar una analogía de hardware
+
+* ASIC (AIR)
+* CPU (varios AIR)
+
+El nombre Cairo proviene de: una CPU construida a partir de AIRs (CPU-AIR, Oh nice -> CAIRO).
+
+CAIRO es un lenguaje funcional de alto nivel, no determinista y completo en turing. 
+Tiene un modelo de memoria basado en registros y un compilador. El compilador produce una tabla de pasos computacionales llamada traza.
+
+El prover utiliza la traza para construir AIRs que se combinan y se convierten en una prueba STARK.
+
+En los programas de Cairo, se escribe qué resultados son aceptables, no cómo obtenerlos.
+
+```cairo
+func main{}() {
+    alloc_locals;
+    local x;
+
+    assert x + 3 = 10;
+    return ();
+}
+```
+
+Esto es esperar que el prover proporcione un valor para x. 
+
+Podemos añadir una pista de la siguiente manera
+
+```cairo
+func main{}() {
+    alloc_locals;
+    local x;
+
+    %{
+    ids.x = 4
+    %}
+
+    assert x + 3 = 10;
+    return ();
+}
+```
+
+Así que esto fallaría pero si producimos una pista aceptable.
+
+```bash
+     %{
+    ids.x = 4
+    %}
+```
+
+`Entonces nuestro código tendrá éxito`
+
