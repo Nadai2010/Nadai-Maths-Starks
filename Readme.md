@@ -566,19 +566,6 @@ Así que esto fallaría pero si producimos una pista aceptable.
 `Entonces nuestro código tendrá éxito`
 
 ## Referencias y lecturas complementarias
-<<<<<<< HEAD
-Este [artículo de medium](https://medium.com/starkware/stark-math-the-journey-begins-51bd2b063c71) de Starkware te llevan a través de las matemáticas a un nivel relativamente alto.
-
-Esta [serie de artículos](https://aszepieniec.github.io/stark-anatomy/) proporciona muchos detalles y la implementación python del proceso
-STARK.
-
-La [serie de artículos](https://vitalik.ca/general/2017/11/09/starks_part_1.html) de Vitalik Buterin explican el proceso STARK
-
-[White Paper STARK](https://eprint.iacr.org/2018/046.pdf)
-[White Paper Cairo](https://eprint.iacr.org/2021/1063)
-
-La serie de vídeos [STARK@Home](https://www.youtube.com/watch?v=9J9rhKJk4RM&list=PLcIyXLwiPilUFGw7r2uyWerOkbx4GFMXq) en Youtube es excelente y ofrece varios niveles de detalle sobre STARKS.
-=======
 - Este [artículo de medium](https://medium.com/starkware/stark-math-the-journey-begins-51bd2b063c71) de Starkware te llevan a través de las matemáticas a un nivel relativamente alto.
 - Esta [serie de artículos](https://aszepieniec.github.io/stark-anatomy/) proporciona muchos detalles y la implementación python del proceso
 STARK.
@@ -588,7 +575,3 @@ STARK.
 - [White Paper Cairo](https://eprint.iacr.org/2021/1063)
 
 - La serie de vídeos [STARK@Home](https://www.youtube.com/watch?v=9J9rhKJk4RM&list=PLcIyXLwiPilUFGw7r2uyWerOkbx4GFMXq) en Youtube es excelente y ofrece varios niveles de detalle sobre STARKS.
->>>>>>> 2d0150d9ab59427fff4f6af0778535cede55adba
-
-
-
