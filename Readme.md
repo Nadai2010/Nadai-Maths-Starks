@@ -37,6 +37,7 @@ Puede encontrar las notas originales [aquí](https://bit.ly/starkmaths2023)
     - [Uso de la aletoriedad](#uso-de-la-aletoriedad)
     - [Concisión y rendimiento](#concisón-y-rendimiento)
     - [Aritmetización](#aritmetización)
+    - [Crear un polinomio para nuestra traza](#crear-un-polinomio-para-nuestra-traza)
     - [FRI](#fri)
     - [Cairo y el no determinismo](#cairo-y-el-no-determinismo)
 
@@ -362,3 +363,27 @@ Si representamos la fila como `i` , y la columna como `j` , y los valores como `
 Se trata de restricciones polinómicas lineales en `Aᵢ,ⱼ`
 
 Nótese que aquí estamos consiguiendo cierta concisión porque podríamos representar un número mucho mayor de filas con sólo estas 3 restricciones.
+
+El sistema de restricciones aritméticas define al menos dos tipos de restricciones sobre la traza de ejecución algebraica:
+
+* Restricciones de contorno: al principio o al final del cálculo, un registro indicado tiene un valor determinado.
+* Restricciones de transición: dos tuplas de estado consecutivas cualesquiera evolucionan de acuerdo con la función de transición de estado.
+
+En conjunto, estas restricciones se conocen como representación algebraica intermedia o AIR.
+
+Los STARK avanzados pueden definir más tipos de restricciones para tratar con la memoria o con la consistencia de los registros dentro de un ciclo.
+
+### Crear un polinomio para nuestra traza
+También en este caso definimos un polinomio `f(x)` tal que los elementos de la traza de ejecución son evaluaciones de `f` en potencias de algún generador `g`.
+
+Recordemos que nuestro campo finito tendrá generadores, que utilizaremos para indexar los pasos de nuestra traza.
+
+Tomando el ejemplo de fibonacci del [artículo de medium](https://medium.com/starkware/arithmetization-ii-403c3b3f4355) podemios crear restricciones como.
+
+`∀ x ∈ {1,g²,g³...g⁵⁰⁹}: f(g²x) ₋ f(gx) ₋ f(x) = 0`
+
+Esto restringe los valores entre las filas subsiguientes.
+
+También significa que los valores g son raíces de este polinomio.
+
+Por lo tanto, podemos utilizar el enfoque que vimos anteriormente para proporcionar el polinomio de fuga utilizando el término `(x - gⁱ)` y a partir de él creamos el polinomio de composición.
