@@ -499,7 +499,7 @@ Para los verificadores honestos, el grado de los polinomios representados tambi�
 Sin embargo, para los probadores maliciosos, este grado es uno menos que la longitud de la palabra clave. En el último paso, el demostrador envía una palabra clave no trivial correspondiente a un polinomio constante.
 
 ### Heurística Fiat-Shamir
-Véase [https://aszepieniec.github.io/stark-anatomy/basic-tools](Véase https://aszepieniec.github.io/stark-anatomy/basic-tools)
+Véase [https://aszepieniec.github.io/stark-anatomy/basic-tools](https://aszepieniec.github.io/stark-anatomy/basic-tools)
 
 Este es un proceso mediante el cual podemos hacer que una prueba interactiva no sea interactiva.
 
