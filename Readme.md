@@ -40,6 +40,7 @@ Puede encontrar las notas originales [aquí](https://bit.ly/starkmaths2023)
     - [Crear un polinomio para nuestra traza](#crear-un-polinomio-para-nuestra-traza)
     - [Polinomio de composición](#polinomio-de-composición)
     - [Ampliando nuestro polinomio](#ampliando-nuestro-polinomio)
+    - [De las restricciones polinómicas al problema de las pruebas de bajo grado](#de-las-restricciones-polinómicas-al-problema-de-las-pruebas-de-bajo-grado)
 
     - [FRI](#fri)
     - [Cairo y el no determinismo](#cairo-y-el-no-determinismo)
@@ -405,3 +406,41 @@ Para demostrar eficazmente la validez del rastro de ejecución, nos esforzamos p
 
 ### Ampliando nuestro polinomio
 Como hemos visto antes, los polinomios pueden utilizarse para construir buenos códigos de corrección de errores, ya que dos polinomios de grado `d`, evaluados en un dominio considerablemente mayor que `d`, son diferentes en casi todas partes.
+
+Observando esto, podemos extender la traza de ejecución pensando en ella como una evaluación de un polinomio en algún dominio, y evaluando este mismo polinomio en un dominio mucho mayor. Extendiendo de manera similar una traza de ejecución incorrecta, se obtiene una cadena muy diferente, lo que a su vez hace posible que el verificador distinga entre estos casos utilizando un pequeño número de consultas.
+
+### De las restricciones polinómicas al problema de las pruebas de bajo grado
+
+En general, si nuestro cálculo implica `N` pasos, la traza de ejecución estará representada por polinomios de grado inferior a `N`
+
+`f(X) = c₀ + c₁X + c₂X² +⋯+ cɴ-₁Xᴺ⁻¹`
+
+"Los coeficientes `cᵢ` están en el campo `F` y el límite `N` en el grado es típicamente grande, quizá del orden de unos pocos millones. A pesar de ello, estos polinomios se denominan de bajo grado.
+
+Esto se debe a que el punto de comparación es el tamaño del campo.
+Por interpolación, toda función sobre `𝔽` puede representarse mediante un polinomio.
+
+La mayoría de ellos tendrán un grado igual al tamaño total del campo, por lo que, comparado con éste, `N` es realmente bajo.
+
+Este tipo de funciones, coherentes con un polinomio de bajo grado, también se conocen como códigos `Reed-Solomon`.
+
+Tras la generación de la traza, el prover se compromete con ella. Recordemos que no queremos enviar los polinomios al verificador como un todo, pero necesitamos que el prover se comprometa con ellos.
+
+En todo el sistema, los compromisos se ejecutan construyendo árboles de Merkle sobre las series de elementos de campo y enviando las raíces de Merkle al verificador.
+
+Queremos que un verificador plantee al prover un número muy reducido de preguntas y decida si acepta o rechaza la prueba con un alto nivel de precisión garantizado.
+Idealmente, al verificador le gustaría pedir al prover que proporcione los valores en unos pocos lugares (aleatorios) en la traza de ejecución, y comprobar que las restricciones polinómicas se mantienen para estos lugares.
+
+Una traza de ejecución correcta pasará naturalmente esta prueba.
+
+Sin embargo, no es difícil construir una traza de ejecución completamente errónea (especialmente si sabíamos de antemano qué puntos se comprobarían), que viole las restricciones sólo en un punto de la traza único y, al hacerlo, llegar a un resultado completamente alejado y
+diferente. Identificar este fallo mediante un pequeño número de consultas
+aleatorias es altamente improbable.
+
+Pero recuerda que los polinomios tienen algunas propiedades útiles aquí
+
+* Dos polinomios (diferentes) de grado `d` evaluados en un dominio considerablemente mayor que `d` son diferentes en casi todas partes.
+
+Así que si tenemos un prover deshonesto, que crea un polinomio de bajo grado representando su traza (que es incorrecta en algún punto) y lo evalúa en un dominio grande, será fácil ver que este es diferente al polinomio correcto.
+
+En `[estas]`(https://www.sikoba.com/docs/zklux1_slides_dmitry.pdf) diapositivas se ofrece un buen ejemplo de este proceso
