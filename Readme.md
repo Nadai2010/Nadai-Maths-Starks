@@ -558,7 +558,7 @@ Así que esto fallaría pero si producimos una pista aceptable.
 
 ```cairo
     %{
-    ids.x = 4
+    ids.x = 7
     %}
 ```
 
