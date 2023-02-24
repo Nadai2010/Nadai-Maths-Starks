@@ -43,7 +43,7 @@ Puede encontrar las notas originales [aquí](https://bit.ly/starkmaths2023)
     - [De las restricciones polinómicas al problema de las pruebas de bajo grado](#de-las-restricciones-polinómicas-al-problema-de-las-pruebas-de-bajo-grado)
     - [Pruebas de bajo grado](#pruebas-de-bajo-grado)
     - [FRI](#fri)
-    - [Heurística Fiat-Shamir](#heurHeurística Fiat-Shamirística-fiat-shamir)
+    - [Heurística Fiat-Shamir](#heurHeurística Fiat-Shamir)
     - [Cairo y el no determinismo](#cairo-y-el-no-determinismo)
 - [Referencias y lecturas complementarias](#referencias-y-lecturas-complementarias)
 
