@@ -556,8 +556,8 @@ func main{}() {
 
 Así que esto fallaría pero si producimos una pista aceptable.
 
-```bash
-     %{
+```cairo
+    %{
     ids.x = 4
     %}
 ```
