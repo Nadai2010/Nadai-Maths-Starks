@@ -351,4 +351,14 @@ Por ejemplo, imaginemos que nuestra traza representa un total en ejecución, con
 ╚════════╩═══════════╩═══════╝
 ```
 
+Si representamos la fila como `i` , y la columna como `j` , y los valores como `Aᵢ,ⱼ` Podríamos escribir algunas restricciones sobre esto de la siguiente manera
 
+`A₀,₂=0`
+
+`∀1 >= i <= 5 : Aᵢ,₂ − Aᵢ,₁ − Aᵢ-₁,₂ = 0`
+
+`A₅,₂ = 18`
+
+Se trata de restricciones polinómicas lineales en `Aᵢ,ⱼ`
+
+Nótese que aquí estamos consiguiendo cierta concisión porque podríamos representar un número mucho mayor de filas con sólo estas 3 restricciones.
