@@ -41,7 +41,7 @@ Puede encontrar las notas originales [aquí](https://bit.ly/starkmaths2023)
     - [Polinomio de composición](#polinomio-de-composición)
     - [Ampliando nuestro polinomio](#ampliando-nuestro-polinomio)
     - [De las restricciones polinómicas al problema de las pruebas de bajo grado](#de-las-restricciones-polinómicas-al-problema-de-las-pruebas-de-bajo-grado)
-
+    - [Pruebas de bajo grado](#pruebas-de-bajo-grado)
     - [FRI](#fri)
     - [Cairo y el no determinismo](#cairo-y-el-no-determinismo)
 
@@ -444,3 +444,7 @@ Pero recuerda que los polinomios tienen algunas propiedades útiles aquí
 Así que si tenemos un prover deshonesto, que crea un polinomio de bajo grado representando su traza (que es incorrecta en algún punto) y lo evalúa en un dominio grande, será fácil ver que este es diferente al polinomio correcto.
 
 En [`estas`](https://www.sikoba.com/docs/zklux1_slides_dmitry.pdf) diapositivas se ofrece un buen ejemplo de este proceso
+
+### Pruebas de bajo grado
+
+Las pruebas de bajo grado son realmente el corazón del proceso de verificación.
