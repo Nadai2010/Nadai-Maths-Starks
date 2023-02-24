@@ -38,6 +38,9 @@ Puede encontrar las notas originales [aquí](https://bit.ly/starkmaths2023)
     - [Concisión y rendimiento](#concisón-y-rendimiento)
     - [Aritmetización](#aritmetización)
     - [Crear un polinomio para nuestra traza](#crear-un-polinomio-para-nuestra-traza)
+    - [Polinomio de composición](#polinomio-de-composición)
+    - [Ampliando nuestro polinomio](#ampliando-nuestro-polinomio)
+
     - [FRI](#fri)
     - [Cairo y el no determinismo](#cairo-y-el-no-determinismo)
 
@@ -384,3 +387,21 @@ Esto restringe los valores entre las filas subsiguientes.
 También significa que los valores g son raíces de este polinomio.
 
 Por lo tanto, podemos utilizar el enfoque que vimos anteriormente para proporcionar el polinomio de fuga utilizando el término `(x - gⁱ)` y a partir de él creamos el polinomio de composición.
+
+![Graph](/im%C3%A1genes/compocisionpo.png.png)
+
+El hecho básico sobre polinomios y sus raíces es que si `p(x)`
+es un polinomio, entonces `p(a)=0` para algún valor específico `a`, si y sólo si existe un polinomio `q(x)` tal que `(x-a)q(x)=p(x)`, y `deg(p)=deg(q)+1`.
+
+Esta expresión coincide con el polinomio de grado 2 como máximo si nuestra traza de ejecución ha sido correcta, es decir, ha obedecido a la restricción de paso que hemos definido.
+
+Si la traza difiere de eso, entonces es poco probable que esta expresión produzca un polinomio de bajo grado.
+
+### Polinomio de composición
+Para demostrar eficazmente la validez del rastro de ejecución, nos esforzamos por alcanzar los dos objetivos siguientes:
+
+1. Componer las restricciones sobre los polinomios de la traza para hacerlas cumplir en la traza.
+2. Combinar las restricciones en un único polinomio (más grande), denominado `Polinomio de Composición`, de modo que se pueda utilizar una única prueba degrado bajo para atestiguar su grado bajo.
+
+### Ampliando nuestro polinomio
+Como hemos visto antes, los polinomios pueden utilizarse para construir buenos códigos de corrección de errores, ya que dos polinomios de grado `d`, evaluados en un dominio considerablemente mayor que `d`, son diferentes en casi todas partes.
