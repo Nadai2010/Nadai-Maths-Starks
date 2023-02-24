@@ -443,4 +443,4 @@ Pero recuerda que los polinomios tienen algunas propiedades útiles aquí
 
 Así que si tenemos un prover deshonesto, que crea un polinomio de bajo grado representando su traza (que es incorrecta en algún punto) y lo evalúa en un dominio grande, será fácil ver que este es diferente al polinomio correcto.
 
-En `[estas]`(https://www.sikoba.com/docs/zklux1_slides_dmitry.pdf) diapositivas se ofrece un buen ejemplo de este proceso
+En [`estas`](https://www.sikoba.com/docs/zklux1_slides_dmitry.pdf) diapositivas se ofrece un buen ejemplo de este proceso
