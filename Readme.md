@@ -376,14 +376,11 @@ Los STARK avanzados pueden definir más tipos de restricciones para tratar con l
 ### Crear un polinomio para nuestra traza
 También en este caso definimos un polinomio `f(x)` tal que los elementos de la traza de ejecución son evaluaciones de `f` en potencias de algún generador `g`.
 
-Recordemos que nuestro campo finito tendrá generadores, que utilizaremos para indexar los pasos de nuestra traza.
-
-Tomando el ejemplo de fibonacci del [artículo de medium](https://medium.com/starkware/arithmetization-ii-403c3b3f4355) podemios crear restricciones como.
+Recordemos que nuestro campo finito tendrá generadores, que utilizaremos para indexar los pasos de nuestra traza. Tomando el ejemplo de fibonacci del [artículo de medium](https://medium.com/starkware/arithmetization-ii-403c3b3f4355) podemios crear restricciones como.
 
 `∀ x ∈ {1,g²,g³...g⁵⁰⁹}: f(g²x) ₋ f(gx) ₋ f(x) = 0`
 
 Esto restringe los valores entre las filas subsiguientes.
-
 También significa que los valores g son raíces de este polinomio.
 
 Por lo tanto, podemos utilizar el enfoque que vimos anteriormente para proporcionar el polinomio de fuga utilizando el término `(x - gⁱ)` y a partir de él creamos el polinomio de composición.
