@@ -34,6 +34,8 @@ Puede encontrar las notas originales [aquí](https://bit.ly/starkmaths2023)
 - [Integridad computacional](#integridad-computacional)
 - [Starks](#starks)
     - [Visión general del proceso stark](#visión-general-del-proceso-stark)
+    - [Uso de la aletoriedad](#uso-de-la-aletoriedad)
+    - [Concisión y rendimiento](#concisón-y-rendimiento)
     - [Aritmetización](#aritmetización)
     - [FRI](#fri)
     - [Cairo y el no determinismo](#cairo-y-el-no-determinismo)
@@ -277,3 +279,75 @@ calcularse a partir de la palabra de código defectuosa siempre que `s + 2t ≤ 
 El dispositivo que reconstruye la información a partir del vector recibido se denomina descodificador
 
 ## Integridad Computacional 
+Una de las características (notables) de los sistemas de prueba de conocimiento cero es que pueden utilizarse para demostrar que algún cálculo se ha realizado correctamente.
+Por ejemplo, si tenemos un programa cairo que comprueba que un verificador conoce la raíz cuadrada de 25, puede ejecutar el programa para comprobarlo, pero el verificador necesita saber que el cálculo se ha realizado correctamente.
+
+La cuestión de la concisión es importante aquí, queremos que el tiempo necesario para verificar el cálculo sea sustancialmente menor que el tiempo necesario para ejecutar el cálculo, de lo contrario el verificador se limitaría a repetir el cálculo.
+
+En la L2 de Starknet nos preocupa principalmente que un lote de transacciones se haya ejecutado correctamente dando lugar a un cambio de estado válido. Los participantes en la L1 desean comprobarlo sin necesidad de ejecutar ellos mismos todas las transacciones.
+
+En el contexto de Starknet, la integridad computacional es más importante que el conocimiento cero, todos los datos de Starknet son públicos.
+
+## Starks
+### Visión general del proceso Stark
+![Graph](/im%C3%A1genes/Starks.png)
+
+Nos interesa la Integridad Computacional (CI), por ejemplo, saber que el programa de Cairo que escribiste se calculó correctamente.
+
+Tenemos que pasar por una serie de transformaciones desde el trazado de nuestro programa, hasta la prueba.
+
+La primera parte de esto se llama aritmetización, y consiste en tomar nuestra traza y convertirla en un conjunto de polinomios.
+
+Nuestro problema se convierte entonces en uno en el que el prover intenta convencer a un verificador de que el polinomio es de grado bajo.
+
+El verificador está convencido de que el polinomio es de grado bajo si y sólo si el cálculo original es correcto (salvo una probabilidad infinitesimalmente pequeña).
+
+### Uso de la aletoriedad
+El prover utiliza la aleatoriedad para alcanzar el conocimiento cero, el verificador utiliza la aleatoriedad al generar consultas al prover, para detectar trampas por parte del prover.
+
+### Concisón y rendimiento
+Gran parte del trabajo que se realiza al crear una prueba consiste en garantizar que sea sucinta y que pueda elaborarse y verificarse en un tiempo razonable.
+
+Por tanto, nuestro plan consiste en
+
+1. Reformular la traza de ejecución como un polinomio,
+2. Extenderlo a un gran dominio,
+3. Transformarlo, utilizando las restricciones polinómicas, en otro polinomio que se garantiza que es de grado bajo si y sólo si la traza de ejecución es válida.
+
+Queremos lograr una verificación sucinta, en la que el verificador de la declaración CI requiera exponencialmente menos recursos que los necesarios para la repetición ingenua.
+
+### Aritmetización
+Hay dos pasos
+
+1. Generación de una traza de ejecución y restricciones polinómicas
+2. Transformar estos dos objetos en un único polinomio de bajo grado.
+
+
+En términos de interacción prover-verificador, lo que realmente ocurre es que el prover y el verificador acuerdan de antemano cuáles son las restricciones polinómicas.
+
+A continuación, el supervisor genera una traza de ejecución y, en la interacción posterior, intenta convencer al verificador de que las restricciones polinómicas se cumplen en esta traza de ejecución, sin que el verificador lo vea.
+
+La traza de ejecución es una tabla que representa los pasos del cálculo subyacente, donde cada fila representa un único paso.
+
+El tipo de traza de ejecución que buscamos generar debe tener la característica especial de ser sucintamente comprobable - "cada fila puede ser verificada basándose sólo en las filas que están cerca de ella en la traza, y el mismo procedimiento de verificación se aplica a cada par de filas".
+
+Por ejemplo, imaginemos que nuestra traza representa un total en ejecución, con cada paso de la siguiente manera.
+
+╔════════╦═══════════╦═══════╗
+║  PASO  ║  IMPORTE  ║ TOTAL ║
+╠════════╬═══════════╬═══════╣
+║   0    ║     0     ║   0   ║    
+╠════════╬═══════════╬═══════╣
+║   1    ║     5     ║   5   ║
+╠════════╬═══════════╬═══════╣
+║   2    ║     2     ║   7   ║
+╠════════╬═══════════╬═══════╣
+║   3    ║     2     ║   9   ║
+╠════════╬═══════════╬═══════╣
+║   4    ║     3     ║   12  ║
+╠════════╬═══════════╬═══════╣
+║   5    ║     6     ║   18  ║
+╚════════╩═══════════╩═══════╝
+
+
+
