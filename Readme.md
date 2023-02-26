@@ -51,10 +51,10 @@ Puede encontrar las notas originales [aquí](https://bit.ly/starkmaths2023)
 ### Terminología
 * El conjunto de los números enteros se designa `ℤ`, por ejemplo, con {⋯,-4,-3,-2,-1,0,1,2,3,4,⋯}.
 * El conjunto de los números racionales se designa `ℚ`, por ejemplo, con {...1,3/2,2,22/7...}.
-* El conjunto de los Números Reales se designa `ℝ` por ejemplo. {2, -4, 613, π, √ 2, ...}.
+* El conjunto de los Números Reales se designa `ℝ`, por ejemplo con {2, -4, 613, π, √ 2, ...}.
 
-Los fields se denotan por `𝔽`, si son un campo finito o `𝕂` para un campo de números reales o complejos
-también usamos `ℤ*ₚ` para representar un campo finito de enteros mod prime p con inversos multiplicativos.
+Los fields se denotan por `𝔽`, si son un campo finito o `𝕂` para un campo de números reales o complejos. 
+También usamos `ℤ*ₚ` para representar un campo finito de enteros mod prime p con inversos multiplicativos.
 
 Utilizamos campos finitos para la criptografía, porque los elementos tienen representaciones "cortas", exactas y propiedades útiles.
 
@@ -63,7 +63,7 @@ Utilizamos campos finitos para la criptografía, porque los elementos tienen rep
 
 ![Graph](/im%C3%A1genes/AritemticaModular.png)
 
-Cuando escribimos n mod k nos referimos simplemente al resto cuando n se divide por k. Así:
+Cuando escribimos n mod k nos referimos simplemente al residuo cuando n se divide por k. Así:
 
 ```bash
 25 mod 3 = 1
@@ -81,7 +81,7 @@ Para ser considerada un grupo, esta combinación debe tener ciertas propiedades
 2. Asociatividad.
     * Para todos los a, b y c en G, (a • b) • c = a • (b • c)
 3. Elementos de identidad.
-    * Existe un elemento e en G tal que, para cada elemento a en G, la ecuación e • a = a • e = a. Tal elemento es único y por lo tanto se habla del elemento identidad.
+    * Existe un elemento e en G tal que, para cada elemento a en G, la ecuación e • a = a • e = a se mantiene. Tal elemento es único y por lo tanto se habla del elemento identidad.
 4. Elemento inverso.
     * Para cada a en G, existe un elemento b en G, comúnmente denotado α⁻¹ (o -a, si la operación se denota "+"), tal que a • b = b • a = e, donde e es el elemento identidad.
 
@@ -129,8 +129,7 @@ Todo campo finito tiene un generador. Un generador es capaz de generar todos los
 Así que para el generador g podemos tomar g⁰, g¹ ,g² y finalmente esto nos dará todos los elementos del grupo.
 
 Por ejemplo, si tomamos el conjunto de los números enteros y el primo p = 5, obtenemos el grupo ℤ*₅ = {0,1,2,3,4}. 
-En el grupo ℤ*₅ las operaciones se realizan en módulo 5; por lo
-5 tanto, no tenemos 3 × 4 = 12 sino 3 × 4 = 2, porque 12 mod 5 = 2.
+En el grupo ℤ*₅ las operaciones se realizan en módulo 5; por lo tanto, no tenemos 3 × 4 = 12 sino 3 × 4 = 2, porque 12 mod 5 = 2.
 
 ℤ*₅ es cíclico y tiene dos generadores, 2 y 3, porque `2¹ = 2, 2² = 4, 2³ = 3, 2⁴ = 1`, y `3¹ = 3, 3² = 4, 3³ = 2, 3⁴ = 1`
 
@@ -168,16 +167,16 @@ Para `n` puntos, puedes crear un polinomio de grado `n-1` que pase por todos los
 ## Sistemas de prueba de conocimiento cero
 ### Qué es una prueba de conocimiento cero
 #### Una definición imprecisa
-Es una prueba de que existe o de que sabemos algo, más un aspecto de conocimiento cero,es decir, la persona que verifica la prueba sólo obtiene una información: que la prueba es válida o inválida.
+Es una prueba de que existe o de que sabemos algo, más un aspecto de conocimiento cero, es decir, la persona que verifica la prueba sólo obtiene una información: que la prueba es válida o inválida.
 
 ### Actores en un sistema a prueba de conocimiento cero
 * Creador - opcional, puede combinarse con el prover
-* Prover
+* Prover (probador)
 * Verificador
 
 El prover creará una prueba para convencer al verificador de que conoce un valor secreto (el testigo) o de que un cálculo se ha realizado correctamente.
 
-El sistema de comprobación puede ser interactivo, en el que el comprobador y el verificador intercambian mensajes para verificar la prueba, o puede consistir únicamente en que el comprobador envíe la prueba al verificador, que puede aceptarla o rechazarla en un solo paso.
+El sistema de comprobación puede ser interactivo, en el que el prover y el verificador intercambian mensajes para verificar la prueba, o puede consistir únicamente en que el prover envíe la prueba al verificador, que puede aceptarla o rechazarla en un solo paso.
 
 A menudo, la verificación será automática, realizada por un contrato inteligente en Ethereum, por ejemplo.
 
@@ -217,7 +216,7 @@ Pasos:
 5. Prover proporciona evaluaciones de polinomios: `P₁(z)...Pₖz)`
 6. El verificador decide si acepta _S_
 
-Los grados esperados son típicamente alrededor de 106 (todavía se considera bajo grado). Tenga en cuenta la probabilidad de aceptar una prueba falsa es `< 10.d/p`, donde `p` es el tamaño del campo, por tanto del orden de `2⁻²³⁰` si nuestro campo finito tiene `p` de `~ 2²⁵⁶`.
+Los grados esperados son típicamente alrededor de 10⁶ (todavía se considera bajo grado). Tenga en cuenta que la probabilidad de aceptar una prueba falsa es `< 10.d/p`, donde `p` es el tamaño del campo, por tanto del orden de `2⁻²³⁰` si nuestro campo finito tiene `p` de `~ 2²⁵⁶`.
 
 Normalmente el número de consultas es de 3 - 10, mucho menos que el grado.
 
@@ -230,9 +229,9 @@ La única aleatoriedad que utilizamos aquí es el muestreo de `z` entre `0,..p-1
 #### ¿Qué propiedades de los polinomios son importantes en este caso?
 1. Los polinomios son buenos códigos de corrección de errores.
 
-Si tenemos polinomios de grado `d` sobre un dominio de codificación `D`, y dos mensajes `m1 y m2`, entonces m1 y m2 diferirán en `|D|-d` puntos. Esto es importante porque queremos que la diferencia entre una correcta y una incorrecta declaración de ser grande, tan fácil de encontrar.
+Si tenemos polinomios de grado `d` sobre un dominio de codificación `D`, y dos mensajes `m1 y m2`, entonces m1 y m2 diferirán en `|D|-d` puntos. Esto es importante porque queremos que la diferencia entre una declaración correcta y una incorrecta sea grande, de modo que sea fácil de encontrar.
 
-Esto conduce a un buen muestreo, lo que ayuda a la concisión, sólo necesitamos muestrear unos pocos valores para estar seguros de que la probabilidad de error es lo suficientemente baja como para ser despreciable.
+Esto conduce a un buen muestreo, lo que ayuda a la concisión, sólo necesitamos muestrear unos pocos valores para estar seguros de que la probabilidad de error es lo suficientemente baja como para ser insignificante.
 
 2. Disponer de pruebas eficaces de lote cero. Esto también ayuda a
 la concisión
@@ -268,8 +267,7 @@ Entonces podemos afirmar que si ` P₁(x)` cumple esta restricción para nuestro
 
 `C(P₁(x)) = P'(x)•V(x)`
 
-Si `P₁(x)` no cumpliera la restricción (por ejemplo si para un valor de `x,P₁(x)= 93)` entonces no podríamos encontrar tales polinomios, la igualdad no se cumpliría y habría
-efectivamente un resto en la ecuación anterior.
+Si `P₁(x)` no cumpliera la restricción (por ejemplo si para un valor de `x,P₁(x)= 93)` entonces no podríamos encontrar tales polinomios, la igualdad no se cumpliría y habría efectivamente un residuo en la ecuación anterior.
 
 ### Códigos Reed Solomon
 Véase [http://pfister.ee.duke.edu/courses/ecen604/rspoly.pdf](http://pfister.ee.duke.edu/courses/ecen604/rspoly.pdf)
@@ -280,14 +278,13 @@ Supongamos que, del total de `n` símbolos, exactamente `t` de ellos se reciben 
 
 Los códigos Reed-Solomon tienen la notable propiedad de que si `t ≤ (n - k)/2`, la información correcta puede calcularse a partir de este codeword defectuoso.
 
-Además, si `s` de los símbolos recibidos se borran (es decir, se etiquetan como probablemente defectuosos) y otros `t` símbolos se reciben con error, la información correcta puede
-calcularse a partir de la palabra de código defectuosa siempre que `s + 2t ≤ n - k`.
+Además, si `s` de los símbolos recibidos se borran (es decir, se etiquetan como probablemente defectuosos) y otros `t` símbolos se reciben erróneos, la información correcta puede calcularse a partir de la codeword defectuosa siempre que `s + 2t ≤ n - k`.
 
-El dispositivo que reconstruye la información a partir del vector recibido se denomina descodificador
+El dispositivo que reconstruye la información a partir del vector recibido se denomina decodificador
 
 ## Integridad Computacional 
 Una de las características (notables) de los sistemas de prueba de conocimiento cero es que pueden utilizarse para demostrar que algún cálculo se ha realizado correctamente.
-Por ejemplo, si tenemos un programa cairo que comprueba que un verificador conoce la raíz cuadrada de 25, puede ejecutar el programa para comprobarlo, pero el verificador necesita saber que el cálculo se ha realizado correctamente.
+Por ejemplo, si tenemos un programa cairo que comprueba que un prover conoce la raíz cuadrada de 25, puede ejecutar el programa para comprobarlo, pero el verificador necesita saber que el cálculo se ha realizado correctamente.
 
 La cuestión de la concisión es importante aquí, queremos que el tiempo necesario para verificar el cálculo sea sustancialmente menor que el tiempo necesario para ejecutar el cálculo, de lo contrario el verificador se limitaría a repetir el cálculo.
 
@@ -332,7 +329,7 @@ Hay dos pasos
 
 En términos de interacción prover-verificador, lo que realmente ocurre es que el prover y el verificador acuerdan de antemano cuáles son las restricciones polinómicas.
 
-A continuación, el supervisor genera una traza de ejecución y, en la interacción posterior, intenta convencer al verificador de que las restricciones polinómicas se cumplen en esta traza de ejecución, sin que el verificador lo vea.
+A continuación, el prover genera una traza de ejecución y, en la interacción posterior, intenta convencer al verificador de que las restricciones polinómicas se cumplen en esta traza de ejecución, sin que el verificador lo vea.
 
 La traza de ejecución es una tabla que representa los pasos del cálculo subyacente, donde cada fila representa un único paso.
 
@@ -377,12 +374,12 @@ El sistema de restricciones aritméticas define al menos dos tipos de restriccio
 
 En conjunto, estas restricciones se conocen como representación algebraica intermedia o AIR.
 
-Los STARK avanzados pueden definir más tipos de restricciones para tratar con la memoria o con la consistencia de los registros dentro de un ciclo.
+Las STARKs avanzadas pueden definir más tipos de restricciones para tratar con la memoria o con la consistencia de los registros dentro de un ciclo.
 
-### Crear un polinomio para nuestra traza
+### Creando un polinomio para nuestra traza
 También en este caso definimos un polinomio `f(x)` tal que los elementos de la traza de ejecución son evaluaciones de `f` en potencias de algún generador `g`.
 
-Recordemos que nuestro campo finito tendrá generadores, que utilizaremos para indexar los pasos de nuestra traza. Tomando el ejemplo de fibonacci del [artículo de medium](https://medium.com/starkware/arithmetization-ii-403c3b3f4355) podemios crear restricciones como.
+Recordemos que nuestro campo finito tendrá generadores, que utilizaremos para indexar los pasos de nuestra traza. Tomando el ejemplo de fibonacci del [artículo de medium](https://medium.com/starkware/arithmetization-ii-403c3b3f4355) podemos crear restricciones como:
 
 `∀ x ∈ {1,g²,g³...g⁵⁰⁹}: f(g²x) ₋ f(gx) ₋ f(x) = 0`
 
@@ -393,18 +390,17 @@ Por lo tanto, podemos utilizar el enfoque que vimos anteriormente para proporcio
 
 ![Graph](/im%C3%A1genes/compocisionpo.png)
 
-El hecho básico sobre polinomios y sus raíces es que si `p(x)`
-es un polinomio, entonces `p(a)=0` para algún valor específico `a`, si y sólo si existe un polinomio `q(x)` tal que `(x-a)q(x)=p(x)`, y `deg(p)=deg(q)+1`.
+El hecho básico sobre polinomios y sus raíces es que si `p(x)` es un polinomio, entonces `p(a)=0` para algún valor específico `a`, si y sólo si existe un polinomio `q(x)` tal que `(x-a)q(x)=p(x)`, y `deg(p)=deg(q)+1`.
 
 Esta expresión coincide con el polinomio de grado 2 como máximo si nuestra traza de ejecución ha sido correcta, es decir, ha obedecido a la restricción de paso que hemos definido.
 
 Si la traza difiere de eso, entonces es poco probable que esta expresión produzca un polinomio de bajo grado.
 
-### Polinomio de composición
+### Composición Polinómica
 Para demostrar eficazmente la validez del rastro de ejecución, nos esforzamos por alcanzar los dos objetivos siguientes:
 
 1. Componer las restricciones sobre los polinomios de la traza para hacerlas cumplir en la traza.
-2. Combinar las restricciones en un único polinomio (más grande), denominado `Polinomio de Composición`, de modo que se pueda utilizar una única prueba degrado bajo para atestiguar su grado bajo.
+2. Combinar las restricciones en un único polinomio (más grande), denominado `Polinomio de Composición`, de modo que se pueda utilizar una única prueba de grado bajo para atestiguar su grado bajo.
 
 ### Ampliando nuestro polinomio
 Como hemos visto antes, los polinomios pueden utilizarse para construir buenos códigos de corrección de errores, ya que dos polinomios de grado `d`, evaluados en un dominio considerablemente mayor que `d`, son diferentes en casi todas partes.
@@ -435,9 +431,8 @@ Idealmente, al verificador le gustaría pedir al prover que proporcione los valo
 
 Una traza de ejecución correcta pasará naturalmente esta prueba.
 
-Sin embargo, no es difícil construir una traza de ejecución completamente errónea (especialmente si sabíamos de antemano qué puntos se comprobarían), que viole las restricciones sólo en un punto de la traza único y, al hacerlo, llegar a un resultado completamente alejado y
-diferente. Identificar este fallo mediante un pequeño número de consultas
-aleatorias es altamente improbable.
+Sin embargo, no es difícil construir una traza de ejecución completamente errónea (especialmente si sabíamos de antemano qué puntos se comprobarían), que viole las restricciones sólo en un punto de la traza único y, al hacerlo, llegar a un resultado completamente alejado y diferente. 
+Identificar este fallo mediante un pequeño número de consultas aleatorias es altamente improbable.
 
 Pero recuerda que los polinomios tienen algunas propiedades útiles aquí
 
@@ -451,7 +446,7 @@ En [`estas`](https://www.sikoba.com/docs/zklux1_slides_dmitry.pdf) diapositivas 
 Las pruebas de bajo grado son realmente el corazón del proceso de verificación.
 
 #### En General
-El supuesto de comprobación de bajo grado establece la existencia de un verificador probabilístico que comprueba si una función `f` es degrado como máximo `d ≪ |𝔽|`
+El supuesto de comprobación de bajo grado establece la existencia de un verificador probabilístico que comprueba si una función `f` es de grado como máximo `d ≪ |𝔽|`
 .
 El verificador debe distinguir entre los dos casos siguientes.
 
@@ -464,10 +459,10 @@ La aritmetización muestra que un prover honesto que trate con una afirmación v
 
 Otra forma de ver esto es que el polinomio de traza correcto combinado con las restricciones será necesariamente de grado bajo, el grado proviene del número de pasos en nuestra traza (probablemente unos pocos millones), y la combinación de esto con los polinomios de restricción (probablemente < 10).
 
-En general, cabría esperar que los polinomios "correctos" tuvieran un grado de alrededor de `10⁷` , mientras que un probador tramposo que eligiera puntos al azar del campo `𝔽` obtendría, tras la interpolación, polinomios de grado comparable al tamaño del campo, es decir, del orden de `2²⁵⁶`
+En general, cabría esperar que los polinomios "correctos" tuvieran un grado de alrededor de `10⁷` , mientras que un prover tramposo que eligiera puntos al azar del campo `𝔽` obtendría, tras la interpolación, polinomios de grado comparable al tamaño del campo, es decir, del orden de `2²⁵⁶`
 
 ## FRI
-FRI son las siglas de `Fast Reed-Solomon IOP of Proximity`, es un protocolo que establece que un polinomio comprometido tiene un grado acotado.
+FRI son las siglas de `Fast Reed-Solomon IOP of Proximity`, es un protocolo que establece que un polinomio comprometido tiene un grado limitado.
 
 El FRI es complejo y gran parte del procesamiento que lo compone está diseñado para que las pruebas sean factibles y sucintas.
 También hay mucho procesamiento involucrado con la protección contra diversos tipos de ataques que podrían ser realizados por el prover, y garantizar que todo se lleva a cabo en el conocimiento cero.
@@ -486,24 +481,24 @@ En este [artículo](https://aszepieniec.github.io/stark-anatomy/) se explica con
 
 "FRI es un protocolo entre un probador y un verificador, que establece que una codeword dada pertenece a un polinomio de grado bajo.
 
-El prover conoce explícitamente este codeword, mientras que el verificador sólo conoce su raíz Merkle y las hojas de su elección, suponiendo la validación satisfactoria de las rutas de autenticación que establecen la pertenencia de las hojasʼ al árbol Merkle."
+El prover conoce explícitamente este codeword, mientras que el verificador sólo conoce su raíz Merkle y las hojas de su elección, suponiendo la validación satisfactoria de las rutas de autenticación que establecen la pertenencia de las hojas al árbol Merkle."
 
-"Una de las grandes ideas para los sistemas de pruebas de los últimos años ha sido la técnica de dividir y doblar. La idea es reducir una afirmación a dos afirmaciones de la mitad de tamaño. A continuación, ambas  afirmaciones se fusionan en una sola utilizando pesos aleatorios proporcionados por el verificador.
+"Una de las grandes ideas para los sistemas de pruebas de los últimos años ha sido la técnica de dividir y doblar. La idea es reducir una afirmación a dos afirmaciones de la mitad de tamaño. A continuación, ambas afirmaciones se fusionan en una sola utilizando pesos aleatorios proporcionados por el verificador.
 
 Después de muchos pasos, la afirmación se ha reducido a una de tamaño trivial que es verdadera si y sólo si (modulo alguna degradación de seguridad insignificante) la afirmación original era verdadera."
 
-El verificador inspecciona los árboles de Merkle (en concreto: pide al probador que proporcione las hojas indicadas con sus rutas de autenticación) de rondas consecutivas para comprobar una relación lineal simple. 
+El verificador inspecciona los árboles de Merkle (en concreto: pide al prover que proporcione las hojas indicadas con sus rutas de autenticación) de rondas consecutivas para comprobar una relación lineal simple. 
 
-Para los verificadores honestos, el grado de los polinomios representados también se reduce a la mitad en cada ronda y, por tanto, es mucho menor que la longitud de la palabra clave.
+Para los provers honestos, el grado de los polinomios representados también se reduce a la mitad en cada ronda y, por tanto, es mucho menor que la longitud de la codeword.
 
-Sin embargo, para los probadores maliciosos, este grado es uno menos que la longitud de la palabra clave. En el último paso, el demostrador envía una palabra clave no trivial correspondiente a un polinomio constante.
+Sin embargo, para los provers maliciosos, este grado es uno menos que la longitud de la codeword. En el último paso, el prover envía una codeword no trivial correspondiente a un polinomio constante.
 
 ### Heurística Fiat-Shamir
 Véase [https://aszepieniec.github.io/stark-anatomy/basic-tools](https://aszepieniec.github.io/stark-anatomy/basic-tools)
 
 Este es un proceso mediante el cual podemos hacer que una prueba interactiva no sea interactiva.
 
-Funciona proporcionando compromisos a los mensajes que formarían la interacción. Las funciones hash se utilizan como fuente de aleatoriedad.
+Funciona proporcionando commitments (compromisos) a los mensajes que formarían la interacción. Las funciones hash se utilizan como fuente de aleatoriedad.
 
 ![Graph](/im%C3%A1genes/Shamir.png)
 
@@ -511,7 +506,7 @@ Funciona proporcionando compromisos a los mensajes que formarían la interacció
 Nos interesa la integridad computacional y, como hemos visto, todos los pasos de un cálculo pueden representarse como polinomios.
 Esta forma se denomina representación algebraica intermedia (AIR).
 
-Los bloques de cálculo representados como un AIR pueden combinarse entre sí, lo que constituye la base de Cairo.
+Los bloques de cálculo representados como una AIR pueden combinarse entre sí, lo que constituye la base de Cairo.
 
 Por utilizar una analogía de hardware
 
@@ -566,7 +561,7 @@ Así que esto fallaría pero si producimos una pista aceptable.
 `Entonces nuestro código tendrá éxito`
 
 ## Referencias y lecturas complementarias
-- Este [artículo de medium](https://medium.com/starkware/stark-math-the-journey-begins-51bd2b063c71) de Starkware te llevan a través de las matemáticas a un nivel relativamente alto.
+- Estos [artículos de medium](https://medium.com/starkware/stark-math-the-journey-begins-51bd2b063c71) de Starkware te llevan a través de las matemáticas a un nivel relativamente alto.
 - Esta [serie de artículos](https://aszepieniec.github.io/stark-anatomy/) proporciona muchos detalles y la implementación python del proceso
 STARK.
 - La [serie de artículos](https://vitalik.ca/general/2017/11/09/starks_part_1.html) de Vitalik Buterin explican el proceso STARK
