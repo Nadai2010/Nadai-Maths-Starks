@@ -1,10 +1,13 @@
 <div align="center">
-  <img alt="starknet logo" src="./assets/Starknet.png" width="200" >
-  <h1 align="center">StarknetEs Basecamp - Maths Starks</h1>
-  <p align="center">
+<img alt="starknet logo" src="https://github.com/Nadai2010/Nadai-Maths-Starks/blob/master/im%C3%A1genes/Starknet.jpg" width="600" >
+  <h1 style="font-size: larger;">
+    <img src="https://github.com/Nadai2010/Nadai-SHARP-Starknet/blob/master/im%C3%A1genes/Starknet.png" width="40">
+    <strong>StarknetEs Basecamp - Maths Starks</strong> 
+    <img src="https://github.com/Nadai2010/Nadai-SHARP-Starknet/blob/master/im%C3%A1genes/Starknet.png" width="40">
+  </h1>
 </div>
 
-# Traducción Starknet Basecamp - Stark Maths
+## Traducción Starknet Basecamp - Stark Maths
 
 Puede encontrar las notas originales [aquí](https://bit.ly/starkmaths2023)
 
@@ -28,7 +31,7 @@ Puede encontrar las notas originales [aquí](https://bit.ly/starkmaths2023)
     - [Tipos de sistema ZK](#tipos-de-sistema-zk)
     - [¿Qué exigimos de una prueba?](#qué-exigimos-de-una-prueba)
     - [Sucintos o Succinctness](#sucintos-o-succinctness)
-    - [Sistema de comprobación idealizado para la integridad computacional](#sistema-de-comprobación-idealizado-para-laintegridad-computacional)
+    - [Sistema de comprobación idealizado para la integridad computacional](#sistema-de-comprobación-idealizado-para-la-integridad-computacional)
     - [Uso de polinomios y restricciones](#uso-de-polinomios-y-restricciones)
     - [Códigos Reed Solomon](#códigos-reed-solomon)
 - [Integridad computacional](#integridad-computacional)
@@ -376,7 +379,7 @@ En conjunto, estas restricciones se conocen como representación algebraica inte
 
 Las STARKs avanzadas pueden definir más tipos de restricciones para tratar con la memoria o con la consistencia de los registros dentro de un ciclo.
 
-### Creando un polinomio para nuestra traza
+### Crear un polinomio para nuestra traza
 También en este caso definimos un polinomio `f(x)` tal que los elementos de la traza de ejecución son evaluaciones de `f` en potencias de algún generador `g`.
 
 Recordemos que nuestro campo finito tendrá generadores, que utilizaremos para indexar los pasos de nuestra traza. Tomando el ejemplo de fibonacci del [artículo de medium](https://medium.com/starkware/arithmetization-ii-403c3b3f4355) podemos crear restricciones como:
@@ -396,7 +399,7 @@ Esta expresión coincide con el polinomio de grado 2 como máximo si nuestra tra
 
 Si la traza difiere de eso, entonces es poco probable que esta expresión produzca un polinomio de bajo grado.
 
-### Composición Polinómica
+### Polinomio de Composición
 Para demostrar eficazmente la validez del rastro de ejecución, nos esforzamos por alcanzar los dos objetivos siguientes:
 
 1. Componer las restricciones sobre los polinomios de la traza para hacerlas cumplir en la traza.
